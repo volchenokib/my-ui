@@ -17,8 +17,8 @@ module.exports = {
 				},
 			},
 		},
-		'@storybook/addon-knobs',
-		'@storybook/addon-links',
-		'@storybook/addon-notes',
+		'@storybook/addon-controls',
+		// '@storybook/addon-knobs',
+		// '@storybook/addon-links',
 	],
 };
