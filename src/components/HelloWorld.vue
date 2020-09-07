@@ -2,36 +2,36 @@
   <form>
     <text-field v-model="login" disabled></text-field>
     <text-field v-model="password"></text-field>
-    <basic-button :disabled="false" :loading="false" @click="ButtonClickHandler">Login</basic-button>
+    <my-btn v-ripple :disabled="false" :loading="false" @click="ButtonClickHandler">Login</my-btn>
   </form>
 </template>
 
 <script>
-import BasicButton from "@/components/BasicButton.vue";
+import myBtn from "@/components/my-btn.vue";
 import customButton from "@/components/customButton/index.vue";
 import TextField from "@/components/TextField.vue";
 export default {
   name: "HelloWorld",
-  components: { BasicButton, customButton, TextField },
+  components: { myBtn, customButton, TextField },
 
   data() {
     return {
       login: "UserLogin",
-      password: ""
+      password: "",
     };
   },
 
   computed: {
     userData() {
       return "UserLogin";
-    }
+    },
   },
 
   methods: {
     ButtonClickHandler() {
       console.log("ButtonClickHandler");
-    }
-  }
+    },
+  },
 };
 </script>
 
