@@ -3,6 +3,7 @@
     type="button"
     :class="[
 			'button',
+			'elevation',
 			{ 'button--disabled': disabled },
 			{ 'button--outlined': outlined },
 		]"
@@ -48,7 +49,7 @@ export default {
     color: {
       type: String,
       required: false,
-      default: "#1867C0",
+      default: "#1867c0",
     },
     /**
      * Removes the ability to click or target the component
@@ -93,12 +94,46 @@ export default {
   border-radius: 4px;
   border-style: solid;
   border-width: 1px;
+  box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+    0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
   cursor: pointer;
   font-size: 1em;
   height: 36px;
   min-width: 64px;
+  outline: 0;
   padding: 0 16px;
   position: relative;
+  text-transform: uppercase;
+  transition-duration: 1s;
+  transition-property: box-shadow, transform, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+
+  &::before {
+    border-radius: inherit;
+    bottom: 0;
+    color: #ffffff;
+    content: "";
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+    background-color: currentColor;
+  }
+  &:hover {
+    opacity: 0.8;
+  }
+  &:not(.button--outlined):focus::before {
+    opacity: 0.24;
+  }
+  &:not(.button--outlined):focus {
+    box-shadow: none !important;
+  }
+  &:not(.button--disabled) {
+    will-change: box-shadow;
+  }
   &__content {
     color: #ffffff;
     text-transform: uppercase;
@@ -127,4 +162,9 @@ export default {
     border: thin solid;
   }
 }
+
+// .elevation {
+//   box-shadow: 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+//     0 1px 5px 0 rgba(0, 0, 0, 0.12) !important;
+// }
 </style>
